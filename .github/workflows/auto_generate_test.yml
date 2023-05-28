@@ -19,13 +19,14 @@ jobs:
           python create_folder.py
 
       - name: Push to Target Repo
-        uses: ad-m/github-push-action@master
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.GIT_TARGET_TOKEN }}
         with:
-          github_token: ${{ secrets.GIT_TARGET_TOKEN }}
-          repository: younesStrittmatter/auto-template-target-test
-          directory: test_folder
-          branch: main
-          commit_message: "New push from source repository"
+          source-directory: 'test_folder'
+          destination-github-username: 'younesStrittmatter'
+          destination-repository-name: 'auto-template-target-test'
+          target-branch: main
 
       - name: Remove the generated folder
         run: rm -rf ./test_folder
