@@ -16,7 +16,7 @@ jobs:
         run: |
           # Here you can call your script that generates the folder
           # For example, if it's a Python script, you can run:
-          python your_script.py
+          python create_folder.py
 
       - name: Push to Target Repo
         uses: ad-m/github-push-action@master
