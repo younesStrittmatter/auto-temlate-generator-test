@@ -24,8 +24,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.GIT_TARGET_TOKEN }}
         with:
           source-directory: 'test_folder'
-          destination-github-username: 'younesStrittmatter'
-          destination-repository-name: 'auto-template-target-test'
+          destination-github-username: 'AutoResearch'
+          destination-repository-name: 'autora-contributor-template'
           target-branch: main
 
       - name: Remove the generated folder
