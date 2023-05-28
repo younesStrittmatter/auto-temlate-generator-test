@@ -1,0 +1,31 @@
+name: Create, push and delete folder
+
+on:
+  workflow_dispatch
+
+
+jobs:
+  push_to_another_repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Repo
+        uses: actions/checkout@v2
+
+      - name: Run your code
+        run: |
+          # Here you can call your script that generates the folder
+          # For example, if it's a Python script, you can run:
+          python your_script.py
+
+      - name: Push to Target Repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GIT_TARGET_TOKEN }}
+          repository: younesStrittmatter/auto-template-target-test
+          directory: test_folder
+          branch: main
+          commit_message: "New push from source repository"
+
+      - name: Remove the generated folder
+        run: rm -rf ./test_folder
